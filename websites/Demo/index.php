@@ -12,7 +12,10 @@ $db = new Database($config['database']);
 
 
 $id = $_GET['id']; 
-$posts = $db->query('select * from posts where id = ?', [$id])->fetchAll(); 
 
+$query = "SELECT * FROM posts where id = :id";
+
+
+$posts = $db->query($query, [':id' => $id])->fetch();
 
 dd($posts);

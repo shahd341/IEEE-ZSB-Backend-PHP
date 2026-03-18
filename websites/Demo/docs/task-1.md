@@ -132,7 +132,7 @@
 ## Array
 - in PHP, Array is used to store multiple values in a single variable.
 - We can access the values by using their index or key.
-- ## There are types of array
+- ## There are 3 types of array
    1. `Indexed Array`     -> use index to access the values
    2. `Associative Array` -> use key to access the values (like map)
    3. `Multidimensional Arrays` -> Arrays containing one or more arrays
@@ -230,4 +230,31 @@ foreach ($colors as $color) {
    
 **Note**
   - When we use `die()` nothing after that function will be executed.
+---
+## PDO (PHP Data Object)
+- it allows PHP to connect to our MySQL Database.
+- *EX*
+```PHP
+public function __construct($config, $username = 'root', $password = '')
+    {
+        $dsn = 'mysql:' . http_build_query($config, '', ';'); 
+
+        $this->connection = new PDO($dsn, $username, $password, [
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC 
+        ]);
+    }
+```
+---
+### SQL Injection
+
+- SQL Injection is a type of attack where a user enters harmful input to change a database query.
+
+- This can allow the attacker to access or modify data that they should not have access to.
+
+*EX*
+```PHP
+$id = $_GET['id']; 
+
+$query = "SELECT * FROM posts where id = :id";
+```
 ---
