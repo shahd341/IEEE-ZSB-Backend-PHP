@@ -6,14 +6,15 @@
 
         <p class="text-blue-600"> <?= $note['body'] ?></p>
         <p class="mt-6">
-            <a href="/notes" class="inline-block px-3 py-1 text-xs font-medium text-white bg-blue-500 rounded hover:bg-blue-600 transition">
-                 Go Back
-            </a>
+            <a href='/notes' class="text-blue-500 hover:underline">go back</a>
         </p>
-
+        <p>
+            <?= htmlspecialchars($note['body']) ?>
+        </p>
 
     </div>
 </main>
 
 
 <?php require('partials/footer.php') ?>
+

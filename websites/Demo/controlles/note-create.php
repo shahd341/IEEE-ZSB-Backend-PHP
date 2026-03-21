@@ -1,27 +1,27 @@
 <?php
-require("Validator.php");
-$heading = "Create Note";
 
-$config = require("config.php");
-$db = new Database($config['database'], $config['username'], $config['password']);
-$currentUserId = 1;
+require 'Validator.php';
 
+$config = require('config.php');
+$db = new Database($config['database']);
 
+$heading = 'New Note';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $errors = [];
 
-$body = "";
-if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    $body = $_POST['body'];
-    $error = [];
-
-    if (! Validator::string($body, 6, 255)) {
-        $error['body'] = "A body no more than 255 char and not less than 6 is required";
+    if (!Validator::string($_POST['body'], 1, 1000)) {
+        $errors['body'] = 'A body of no more than 1000 charachters is required';
     }
 
-    if (empty(trim($error['body']))) {
-        $query = "INSERT INTO notes (body , user_id) VALUES (?,?)";
-        $db->query($query, [$body, $currentUserId]);
-        $_SESSION['msg'] = "Note Created Successfully...!";
+    if (empty($errors)) {
+
+        $db->query('INSERT INTO notes(body,user_id) VALUES(:body, :user_id)', [
+            'body' => $_POST['body'],
+            'user_id' => $USER_ID
+        ]);
     }
 }
-include('views/note-create.view.php');
+
+
+require 'views/note-create.view.php';

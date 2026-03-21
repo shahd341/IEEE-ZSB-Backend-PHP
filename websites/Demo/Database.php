@@ -1,50 +1,46 @@
 <?php
 
-use PDO;
-
 class Database
 {
-    public $connection;
-    public $statment;
-    public function __construct($config, $username, $password)
-    {
 
-        $dsn = "mysql:" . http_build_query($config, '', ';');
+    public $connection;
+    public $statement;
+
+    public function __construct($config, $username = 'root', $password = '')
+    {
+        $dsn = 'mysql:' . http_build_query($config, '', ';'); // to build connection string with key-value pairs and delimeter ;
 
         $this->connection = new PDO($dsn, $username, $password, [
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC // default fetch mode
         ]);
     }
 
     public function query($query, $params = [])
     {
-        $this->statment = $this->connection->prepare($query);
-        $this->statment->execute($params);
+        $this->statement = $this->connection->prepare($query);
+
+        $this->statement->execute($params);
 
         return $this;
     }
 
+    public function findALl()
+    {
+        return $this->statement->fetchAll();
+    }
+
     public function find()
     {
-        return $this->statment->fetch();
+        return $this->statement->fetch();
     }
 
     public function findOrFail()
     {
-        $reslut = $this->find();
-        if (! $reslut) {
+        $result = $this->find();
+
+        if (!$result) {
             abort();
         }
-        return $reslut;
-    }
-
-    public function all()
-    {
-        return $this->statment->fetchAll();
-    }
-
-    function get()
-    {
-        return $this->statment->fetchAll();
+        return $result;
     }
 }

@@ -1,11 +1,11 @@
 <?php
-$heading = "My Notes";
 
-$config = require("config.php");
-$db = new Database($config['database'], $config['username'], $config['password']);
+$config = require 'config.php';
 
-$user_id = 1;
-$notes = $db->query("SELECT * FROM notes WHERE user_id = ?" , [$user_id])->all();
+$db = new Database($config['database']);
 
+$heading = 'My Notes';
 
-require('views/notes.view.php');
+$notes = $db->query('select * from notes where user_id = ?',[$USER_ID])->findALl();
+
+require 'views/notes.view.php';

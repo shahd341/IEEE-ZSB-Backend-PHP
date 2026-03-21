@@ -5,9 +5,7 @@ class Validator
     {
         $value = trim($value);
 
-        $length = strlen($value);
-
-        return $length >= $min && $length <= $max;
+        return strlen($value) >= $min && strlen($value) <= $max;
     }
 
     public static function emial($value)
