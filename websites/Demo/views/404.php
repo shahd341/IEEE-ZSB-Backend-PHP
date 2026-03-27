@@ -6,7 +6,7 @@
         <h1 class="text-2xl font-bold"> Sorry, Page not found </h1>
 
         <p class="mt-4">
-            <a href='/' class="text-blue underline">Go Back Home</a>
+            <a href="/" class="text-blue underline">Go Back Home</a>
         </p>
     </div>
 </main>
