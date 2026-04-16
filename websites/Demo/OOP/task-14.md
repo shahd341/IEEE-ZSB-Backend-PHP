@@ -1,7 +1,7 @@
 # Reasearch Questions
 
 ## 1. Class vs Object
-- A **Class* is like a `blueprint` or a `plan` that we use to create things, while an *Object* is the `actual thing` that is created from that blueprint.
+- A **Class** is like a `blueprint` or a `plan` that we use to create things, while an **Object** is the `actual thing` that is created from that blueprint.
 
 - *EX*
 A Class as the recipe for making a cake.
@@ -20,13 +20,17 @@ The Object is the real cake you bake using that recipe.
 - refer to current object (the real instance)
 - access non static members
 - use `$` because it represent a variable 
-- **EX** ```php  $this->name ```
+- **EX** 
+
+  - ```php  $this->name ```
 
 **`self::`**
 - refer to current class (the blueprint itself)
 - access static members
 - not use `$` because it is not represent a variable but represent class construction
-- **EX** ```php self::$count ```
+- **EX**
+ 
+  - ```php self::$count ```
 
 ### When do you use one over the other?
 - when we want to access properties or methods of this specific object , we use `$this` 
@@ -52,7 +56,7 @@ The Object is the real cake you bake using that recipe.
 
 ### How do they help prevent bugs compared to declaring properties without a type?
 - Without type 
-```php public $age;  ``` -> anyone can put string, intger, float....
+```php public $age;  ``` --> anyone can put string, intger, float....
 
 - With type:
    - PHP automatically checks the type.
