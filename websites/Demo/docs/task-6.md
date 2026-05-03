@@ -13,13 +13,13 @@
  - Builds user trust (secure connection in browser).
 
 ### Risks of Using HTTP
- - If your website uses HTTP instead of HTTPS:
+ - If your website uses `HTTP` instead of `HTTPS`:
  - Data is sent in plain text 
  - Attackers can steal login credentials
  - Vulnerable to session hijacking
  - Users may see “Not Secure” warning in browser
 
-*SO* Always use `HTTPS`
+**SO** Always use `HTTPS`
 
 ---
 ## Protect Directory with Firewall
